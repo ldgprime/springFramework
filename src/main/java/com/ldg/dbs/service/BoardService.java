@@ -7,7 +7,7 @@ import com.ldg.dbs.dto.BoardVO;
 public interface BoardService {
 	
 	public List<BoardVO> selectAll();
-	public int insert(BoardVO board);	
+	public void insert(BoardVO board);	
 	public BoardVO selectOne(int bno);
 	public void update(BoardVO board);
 	public void delete(int bno);

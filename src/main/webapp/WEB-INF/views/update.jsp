@@ -9,30 +9,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>write page</h1>
+<h1>update page</h1>
 
 
 <br/>
 
-<form action="writeProc" method="POST">
+<form action="updateProc" method="POST">
+<input type="hidden" name="bno" value="${board.bno }" /><br/>
 <label>글제목:</label><br/>
-<input type="text" name="title"/><br/>
+<input type="text" name="title" value="${board.title }" /><br/>
 <label>글내용:</label><br/>
-<textarea cols="30" rows="3" name="content"></textarea><br/>
+<textarea cols="30" rows="3" name="content">${board.content }</textarea><br/>
 <label>작성자:</label><br/>
-<input type="text" name="writer"/><br/>
+<input type="text" name="writer" value="${board.writer }"/><br/>
 <br/>
-<button type="submit">글작성</button>
+<button type="submit">글수정</button>
 <button type="reset">초기화</button>
 </form>
 
 
 <br/><br/><br/><br/><br/>
 
-<button onclick="location.href='list'" type="button">목록</button>
-
-
-
+<a href="list" type="button">목록</a>
 
 </body>
 </html>

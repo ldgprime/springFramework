@@ -36,8 +36,9 @@
 
 </table>
 
-<a href="write" type="button">글쓰기</a>
+<br/><br/><br/><br/><br/>
 
+<button onclick="location.href='write'" type="button">글쓰기</button>
 
 
 </body>

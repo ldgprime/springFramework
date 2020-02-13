@@ -11,15 +11,25 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean id="dataSourceMySQL" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/ldgdb?useSSL=false"/>
 		<property name="username" value="ldg"/>
 		<property name="password" value="1234"/>
 	</bean>
+	
+	
+	<bean id="dataSourceOracle" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+		<property name="username" value="board"/>
+		<property name="password" value="1234"/>
+	</bean>
+	
+	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	                            	<!-- 위의 작성한 bean을 사용한다. -->
-		<property name="dataSource" ref="dataSource"></property>
+		<property name="dataSource" ref="dataSourceOracle"></property>
 	</bean>
 	<!-- resources xml 위치? -->
 	<mybatis-spring:scan base-package="com.ldg.dbs.mapper"/>

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ldg.dbs.dto.BoardVO;
 import com.ldg.dbs.mapper.BoardMapper;
@@ -23,33 +24,38 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int insert(BoardVO board) {
+	public void insert(BoardVO board) {
 		// TODO Auto-generated method stub
 		
-		int result = boardMapper.insert(board);
-		
-		
-		return result;
+		boardMapper.insert(board);
 	}
-
+	
+	
 	@Override
+	@Transactional
 	public BoardVO selectOne(int bno) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		BoardVO board = boardMapper.read(bno);
+		boardMapper.updateReadCount(bno);
+		
+		return board;
 	}
 
 
 	
 	@Override
 	public void update(BoardVO board) {
-		// TODO Auto-generated method stub
-
+		// TODO Auto-generated method stub		
+		boardMapper.update(board);
+		
+		
 	}
 
 	@Override
 	public void delete(int bno) {
 		// TODO Auto-generated method stub
-
+		boardMapper.delete(bno);
 	}
 
 }
