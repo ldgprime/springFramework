@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ldg.dbs.dto.BoardVO;
+import com.ldg.dbs.dto.Criteria;
+import com.ldg.dbs.dto.PageMaker;
 import com.ldg.dbs.service.BoardService;
 
 @Controller
@@ -20,9 +22,14 @@ public class BoardController {
 	private BoardService service;
 	
 	@RequestMapping("/list")
-	public String list(Model model) {
+	public String list(@ModelAttribute ("criteria") Criteria criteria, Model model) {	
 		
-		model.addAttribute("list", service.selectAll());
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCriteria(criteria);
+		pageMaker.setTotalCount(service.countPaging(criteria));			
+		
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("list", service.selectAll(criteria));
 		
 		return "list";
 	}	

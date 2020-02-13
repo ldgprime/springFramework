@@ -28,7 +28,7 @@
 </form>
 
 
-<br/><br/><br/><br/><br/>
+<br/><br/>
 
 <a href="list" type="button">목록</a>
 

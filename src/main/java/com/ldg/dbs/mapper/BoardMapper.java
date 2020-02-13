@@ -3,6 +3,7 @@ package com.ldg.dbs.mapper;
 import java.util.List;
 
 import com.ldg.dbs.dto.BoardVO;
+import com.ldg.dbs.dto.Criteria;
 
 public interface BoardMapper {
 
@@ -13,5 +14,9 @@ public interface BoardMapper {
 	public void delete(int bno);
 	public void update(BoardVO board);
 	public void updateReadCount(int bno);
+	
+	public List<BoardVO> oracleListPaging(Criteria criteria);
+	
+	public int countPaging();
 	
 }

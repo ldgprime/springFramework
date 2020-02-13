@@ -23,12 +23,16 @@
 <input type="text" name="writer" readonly="readonly" value="${board.writer }"/><br/>
 
 </form>
-<br/><br/><br/><br/><br/>
+<br/><br/>
 
 
 <button onclick="location.href='update?bno=${board.bno}'" type="button">글수정</button>
 <button onclick="location.href='delete?bno=${board.bno}'" type="button">글삭제</button>
 <button onclick="location.href='list'" type="button">목록</button>
+
+
+
+
 
 
 

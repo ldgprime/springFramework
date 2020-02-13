@@ -3,6 +3,7 @@ package com.ldg.dbs.service;
 import java.util.List;
 
 import com.ldg.dbs.dto.BoardVO;
+import com.ldg.dbs.dto.Criteria;
 
 public interface BoardService {
 	
@@ -12,4 +13,7 @@ public interface BoardService {
 	public void update(BoardVO board);
 	public void delete(int bno);
 	
+	public List<BoardVO> selectAll(Criteria criteria);
+	
+	public int countPaging(Criteria criteria);
 }

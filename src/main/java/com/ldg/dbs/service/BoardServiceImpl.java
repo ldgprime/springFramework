@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ldg.dbs.dto.BoardVO;
+import com.ldg.dbs.dto.Criteria;
 import com.ldg.dbs.mapper.BoardMapper;
 
 @Service
@@ -20,7 +21,9 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> selectAll() {
 		// TODO Auto-generated method stub
+		
 		return boardMapper.getList();
+		
 	}
 
 	@Override
@@ -28,6 +31,7 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		
 		boardMapper.insert(board);
+		
 	}
 	
 	
@@ -56,6 +60,18 @@ public class BoardServiceImpl implements BoardService {
 	public void delete(int bno) {
 		// TODO Auto-generated method stub
 		boardMapper.delete(bno);
+	}
+
+	@Override
+	public List<BoardVO> selectAll(Criteria criteria) {
+		// TODO Auto-generated method stub
+		return boardMapper.oracleListPaging(criteria);
+	}
+
+	@Override
+	public int countPaging(Criteria criteria) {
+		// TODO Auto-generated method stub
+		return boardMapper.countPaging();
 	}
 
 }

@@ -35,7 +35,7 @@ public class DBTest {
 			System.out.println(list.get(i));
 		}
 	}
-	
+
 	
 	
 	//test라는 것을 알려줘야한다.
@@ -53,5 +53,8 @@ public class DBTest {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
 	
 }

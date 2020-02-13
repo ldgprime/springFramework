@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <h1>List page</h1>
 
 <table>
@@ -34,9 +35,73 @@
 </c:forEach>
 </tbody>
 
+<tr>
+<td colspan="5" align="center">
+
+<%-- <c:if test="${pageMaker.prev }">
+	<a href="${pageMaker.startPage-1 }">이전</a>
+</c:if> --%>
+
+<c:choose>
+<c:when test="${pageMaker.prev }">
+<a href="${pageMaker.startPage-1 }">이전</a>
+</c:when>
+<c:otherwise>
+  이전
+</c:otherwise>
+</c:choose>
+
+<c:forEach begin="${pageMaker.startPage }" end="${ pageMaker.endPage}" var="i">
+<c:choose>
+<c:when test="${pageMaker.criteria.page == i }">
+	${i }
+</c:when>
+<c:otherwise>
+<a href="${i }">${i }</a>
+</c:otherwise>
+</c:choose>
+</c:forEach>
+	
+<c:choose>
+<c:when test="${pageMaker.next }">
+<a href="${pageMaker.endPage+1 }">다음</a>
+</c:when>
+<c:otherwise>
+  다음
+</c:otherwise>
+</c:choose>	
+	
+<%-- <c:if test="${pageMaker.next }">
+	<a href="${pageMaker.endPage+1 }">다음</a>
+</c:if> --%>
+
+</td>
+</tr>
+
 </table>
 
-<br/><br/><br/><br/><br/>
+
+<%-- <ul>
+<c:if test="${pageMaker.prev }">
+	<li><a href="${pageMaker.startPage - 1 }">&laquo;</a></li>
+	
+</c:if>
+
+<c:forEach begin="${pageMaker.endPage }" end="${pageMaker.endPage }" var="idx">
+	<li>
+		<c:out value="${pageMaker.endPage }"/> 
+		<a href="${idx }">${idx }</a>
+	</li>
+</c:forEach>
+
+<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+	<li><a href="${pageMaker.endPage +1 }">&laquo;</a></li>
+
+</c:if>
+
+</ul> --%>
+
+<br/><br/>
 
 <button onclick="location.href='write'" type="button">글쓰기</button>
 
