@@ -71,7 +71,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int countPaging(Criteria criteria) {
 		// TODO Auto-generated method stub
-		return boardMapper.countPaging();
+		return boardMapper.countPaging(criteria);
 	}
 
 }

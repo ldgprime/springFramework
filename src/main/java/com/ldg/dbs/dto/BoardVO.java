@@ -9,8 +9,15 @@ public class BoardVO {
 	private String writer;
 	private String content;
 	private Date regdate;
-	private int readcount;		
+	private int readcount;	
+	private int replycount;
 	
+	public int getReplycount() {
+		return replycount;
+	}
+	public void setReplycount(int replycount) {
+		this.replycount = replycount;
+	}
 	public int getBno() {
 		return bno;
 	}
@@ -50,7 +57,10 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regdate="
-				+ regdate + ", readcount=" + readcount + "]";
-	}	
+				+ regdate + ", readcount=" + readcount + ", replycount=" + replycount + "]";
+	}
+	
+	
+
 	
 }

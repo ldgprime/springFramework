@@ -5,12 +5,43 @@ public class Criteria {
 	
 	private int page;
 	private int perPageNum;
+	private String type;
+	private String keyword;	
 	
+	public String getType() {
+		return type;
+	}
+
+	public String[] getTypeArr() {
+												//스트링 배열 T, W, C
+		return type == null ? new String[] {} : type.split("");
+	}	
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
 	public Criteria() {
 		//첫번째 페이지 
 		this.page = 1;
 		//레코드 10개 씩 => 한페이지 당 10개의 글 10개의 행 10개의 row
 		this.perPageNum = 10;
+	}
+	
+	
+	public Criteria(int page, int perPageNum) {
+		//첫번째 페이지 
+		this.page = page;
+		//레코드 10개 씩 => 한페이지 당 10개의 글 10개의 행 10개의 row
+		this.perPageNum = perPageNum;
 	}
 	
 	public void setPage(int page) {
@@ -28,6 +59,7 @@ public class Criteria {
 		}
 		this.perPageNum = perPageNum;
 	}
+	
 	public int getPage() {
 		return page;
 	}
@@ -42,13 +74,11 @@ public class Criteria {
 	public int getPerPageNum() {
 		return this.perPageNum;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";
-	}
-	
-	
-	
+		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", type=" + type + ", keyword=" + keyword
+				+ "]";
+	}	
 	
 }

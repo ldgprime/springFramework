@@ -18,6 +18,8 @@
 <form action="writeProc" method="POST">
 <input type="hidden" id="bno" name="bno" value="${board.bno}" />
 <input type="hidden" id="page" name="page" value="${criteria.page}" />
+<input type="hidden" id="type" name="type" value="${criteria.type}">
+<input type="hidden" id="keyword" name="keyword" value="${criteria.keyword}">
 <input type="hidden" id="perPageNum" name="perPageNum" value="${criteria.perPageNum}">
 <label>글제목:</label><br/>
 <input type="text" name="title" readonly="readonly" value="${board.title }"/><br/>
@@ -44,25 +46,26 @@
 	var bno = $('#bno').val();
 	var page = $('#page').val();
 	var perPageNum = $('#perPageNum').val();
-
+	var type = $('#type').val();
+	var keyword = $('#keyword').val();
 	
 	
 	
 	$('#list').on('click',function(){
 		
-		location.href= 'list?page='+page+'&perPageNum='+perPageNum;	
+		location.href= 'list?page='+page+'&perPageNum='+perPageNum+'&type='+type+'&keyword='+keyword;	
 	
 	})
 	
 	$('#update').on('click',function(){
 		
-		location.href= 'update?page='+page+'&perPageNum='+perPageNum+'&bno='+bno;	
+		location.href= 'update?page='+page+'&perPageNum='+perPageNum+'&bno='+bno+'&type='+type+'&keyword='+keyword;	
 	
 	})
 	
 	$('#delete').on('click',function(){
 		
-		location.href= 'delete?page='+page+'&perPageNum='+perPageNum+'&bno='+bno;	
+		location.href= 'delete?page='+page+'&perPageNum='+perPageNum+'&bno='+bno+'&type='+type+'&keyword='+keyword;	
 	
 	})
 	

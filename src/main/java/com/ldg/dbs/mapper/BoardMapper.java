@@ -2,6 +2,8 @@ package com.ldg.dbs.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ldg.dbs.dto.BoardVO;
 import com.ldg.dbs.dto.Criteria;
 
@@ -17,6 +19,8 @@ public interface BoardMapper {
 	
 	public List<BoardVO> oracleListPaging(Criteria criteria);
 	
-	public int countPaging();
+	public int countPaging(Criteria criteria);
+	
+	public void updateReplyCount(@Param ("amount") int amount,@Param ("bno") int bno);
 	
 }

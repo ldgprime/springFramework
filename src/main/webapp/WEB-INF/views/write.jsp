@@ -18,6 +18,8 @@
 <form action="writeProc" method="POST">
 <input type="hidden" id="page" name="page" value="${criteria.page}" />
 <input type="hidden" id="perPageNum" name="perPageNum" value="${criteria.perPageNum}">
+<input type="hidden" id="type" name="type" value="${criteria.type}">
+<input type="hidden" id="keyword" name="keyword" value="${criteria.keyword}">
 <label>글제목:</label><br/>
 <input type="text" name="title"/><br/>
 <label>글내용:</label><br/>
@@ -32,7 +34,7 @@
 
 <br/><br/>
 
-<button onclick="location.href='list?page=${criteria.page}&perPageNum=${criteria.perPageNum}'" type="button">목록</button>
+<button onclick="location.href='list?page=${criteria.page}&perPageNum=${criteria.perPageNum}&type=${criteria.type}&keyword=${criteria.keyword}'" type="button">목록</button>
 
 
 

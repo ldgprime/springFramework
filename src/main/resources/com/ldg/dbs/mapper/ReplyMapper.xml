@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mybatis 매핑된 SQL 구문 살펴보기 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ldg.dbs.mapper.ReplyMapper">		
+	
+	<select id="getList" resultType="com.ldg.dbs.dto.ReplyVO">
+	  <![CDATA[
+	   	select * from reply where bno = #{bno}
+	   ]]>
+	</select>
+	
+	<insert id="insert">
+		insert into reply (rno, content, writer, bno) values(rno_SEQ.nextval, #{content}, #{writer}, #{bno})
+	</insert>
+	
+	<delete id="delete">
+		delete from reply where rno = #{rno}	
+	</delete>
+	
+	<select id="getReple" resultType="com.ldg.dbs.dto.ReplyVO">
+		select * from reply where rno = # {rno}	
+	</select>
+</mapper>

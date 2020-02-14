@@ -47,6 +47,9 @@ public class BoardController {
 		
 		rttr.addAttribute("page", criteria.getPage());
 		rttr.addAttribute("PerPageNum", criteria.getPerPageNum());
+		rttr.addAttribute("keyword", criteria.getKeyword());
+		rttr.addAttribute("type", criteria.getTypeArr());
+//		rttr.addFlashAttribute(attributeValue);	
 		
 		return "redirect:list";	
 		
@@ -87,15 +90,16 @@ public class BoardController {
 	
 	@GetMapping("delete")
 	public String delete(@RequestParam ("bno") int bno,@ModelAttribute ("criteria") Criteria criteria,RedirectAttributes rttr) {
-		
-		
-		
+			
 		service.delete(bno);		
 		
 		rttr.addAttribute("page", criteria.getPage());
 		rttr.addAttribute("perPageNum", criteria.getPerPageNum());
-			
+		rttr.addAttribute("type", criteria.getType());
+		rttr.addAttribute("keyword", criteria.getKeyword());
+		
 		return "redirect:list";
+		
 	}
 	
 }

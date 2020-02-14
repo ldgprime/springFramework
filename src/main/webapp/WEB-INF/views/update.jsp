@@ -18,6 +18,8 @@
 <form action="updateProc" method="POST">
 <input type="hidden" id="page" name="page" value="${criteria.page}" />
 <input type="hidden" id="perPageNum" name="perPageNum" value="${criteria.perPageNum}">
+<input type="hidden" id="type" name="type" value="${criteria.type}">
+<input type="hidden" id="keyword" name="keyword" value="${criteria.keyword}">
 <input type="hidden" id="bno" name="bno" value="${board.bno }" /><br/>
 <label>글제목:</label><br/>
 <input type="text" name="title" value="${board.title }" /><br/>
@@ -40,11 +42,13 @@
 var bno = $('#bno').val();
 var page = $('#page').val();
 var perPageNum = $('#perPageNum').val();
+var type = $('#type').val();
+var keyword = $('#keyword').val();
 
 $('#list').on('click',function(){
 		
-	location.href= 'list?page='+page+'&perPageNum='+perPageNum;	
-
+	location.href= 'list?page='+page+'&perPageNum='+perPageNum+'&type='+type+'&keyword='+keyword;	
+	
 })
 
 </script>
