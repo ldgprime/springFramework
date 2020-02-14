@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 <h1>read page</h1>
@@ -15,6 +16,9 @@
 <br/>
 
 <form action="writeProc" method="POST">
+<input type="hidden" id="bno" name="bno" value="${board.bno}" />
+<input type="hidden" id="page" name="page" value="${criteria.page}" />
+<input type="hidden" id="perPageNum" name="perPageNum" value="${criteria.perPageNum}">
 <label>글제목:</label><br/>
 <input type="text" name="title" readonly="readonly" value="${board.title }"/><br/>
 <label>글내용:</label><br/>
@@ -26,11 +30,45 @@
 <br/><br/>
 
 
-<button onclick="location.href='update?bno=${board.bno}'" type="button">글수정</button>
+<%-- <button onclick="location.href='update?bno=${board.bno}&page=${criteria.page}&perPageNum=${criteria.perPageNum }'" type="button">글수정</button>
 <button onclick="location.href='delete?bno=${board.bno}'" type="button">글삭제</button>
-<button onclick="location.href='list'" type="button">목록</button>
+<button onclick="location.href='list'" type="button">목록</button> --%>
 
 
+<button id="update">글수정</button>
+<button id="delete">글삭제</button>
+<button id="list">목록</button>
+
+<script>
+
+	var bno = $('#bno').val();
+	var page = $('#page').val();
+	var perPageNum = $('#perPageNum').val();
+
+	
+	
+	
+	$('#list').on('click',function(){
+		
+		location.href= 'list?page='+page+'&perPageNum='+perPageNum;	
+	
+	})
+	
+	$('#update').on('click',function(){
+		
+		location.href= 'update?page='+page+'&perPageNum='+perPageNum+'&bno='+bno;	
+	
+	})
+	
+	$('#delete').on('click',function(){
+		
+		location.href= 'delete?page='+page+'&perPageNum='+perPageNum+'&bno='+bno;	
+	
+	})
+	
+	
+
+</script>
 
 
 

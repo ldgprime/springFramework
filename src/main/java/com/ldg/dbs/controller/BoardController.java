@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ldg.dbs.dto.BoardVO;
 import com.ldg.dbs.dto.Criteria;
@@ -35,21 +36,24 @@ public class BoardController {
 	}	
 	
 	@RequestMapping("/write")
-	public String write() {
+	public String write(@ModelAttribute ("criteria") Criteria criteria) {
 		return "write";
 	}
 		
 	@RequestMapping(value="/writeProc", method = RequestMethod.POST)
-	public String write(@ModelAttribute("board") BoardVO board) {
+	public String write(@ModelAttribute("board") BoardVO board,@ModelAttribute ("criteria") Criteria criteria,RedirectAttributes rttr) {
 		
 		service.insert(board);
-			
+		
+		rttr.addAttribute("page", criteria.getPage());
+		rttr.addAttribute("PerPageNum", criteria.getPerPageNum());
+		
 		return "redirect:list";	
 		
 	}
 		
-	@RequestMapping("/read")
-	public String read(@RequestParam int bno,Model model) {
+	@RequestMapping(value="/read", method = RequestMethod.GET)
+	public String read(@RequestParam ("bno") int bno,Model model,@ModelAttribute ("criteria") Criteria criteria) {
 		
 		BoardVO board = service.selectOne(bno);	
 		
@@ -59,7 +63,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/update")
-	public String update(@RequestParam int bno, Model model) {
+	public String update(@RequestParam int bno, Model model,@ModelAttribute ("criteria") Criteria criteria) {
 		
 		BoardVO board = service.selectOne(bno);			
 		
@@ -69,20 +73,29 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/updateProc", method = RequestMethod.POST)
-	public String update(@ModelAttribute("board") BoardVO board) {		
+	public String update(@ModelAttribute("board") BoardVO board,@ModelAttribute ("criteria") Criteria criteria,RedirectAttributes rttr) {		
 		
 		service.update(board);		
-			
+//		rttr.addAttribute("criteria", criteria);
+	
+		rttr.addAttribute("page", criteria.getPage());
+		rttr.addAttribute("perPageNum", criteria.getPerPageNum());
+		 
 		return "redirect:list";		
 
 	}
 	
 	@GetMapping("delete")
-	public String delete(@RequestParam ("bno") int bno) {
+	public String delete(@RequestParam ("bno") int bno,@ModelAttribute ("criteria") Criteria criteria,RedirectAttributes rttr) {
+		
+		
 		
 		service.delete(bno);		
+		
+		rttr.addAttribute("page", criteria.getPage());
+		rttr.addAttribute("perPageNum", criteria.getPerPageNum());
 			
-		return "redirect:list";			
+		return "redirect:list";
 	}
 	
 }

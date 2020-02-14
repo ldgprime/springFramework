@@ -59,7 +59,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void delete(int bno) {
 		// TODO Auto-generated method stub
-		boardMapper.delete(bno);
+		boardMapper.delete(bno);		
 	}
 
 	@Override

@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 <h1>write page</h1>
@@ -15,6 +16,8 @@
 <br/>
 
 <form action="writeProc" method="POST">
+<input type="hidden" id="page" name="page" value="${criteria.page}" />
+<input type="hidden" id="perPageNum" name="perPageNum" value="${criteria.perPageNum}">
 <label>글제목:</label><br/>
 <input type="text" name="title"/><br/>
 <label>글내용:</label><br/>
@@ -29,7 +32,7 @@
 
 <br/><br/>
 
-<button onclick="location.href='list'" type="button">목록</button>
+<button onclick="location.href='list?page=${criteria.page}&perPageNum=${criteria.perPageNum}'" type="button">목록</button>
 
 
 

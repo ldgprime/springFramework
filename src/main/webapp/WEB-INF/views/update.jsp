@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 <h1>update page</h1>
@@ -15,7 +16,9 @@
 <br/>
 
 <form action="updateProc" method="POST">
-<input type="hidden" name="bno" value="${board.bno }" /><br/>
+<input type="hidden" id="page" name="page" value="${criteria.page}" />
+<input type="hidden" id="perPageNum" name="perPageNum" value="${criteria.perPageNum}">
+<input type="hidden" id="bno" name="bno" value="${board.bno }" /><br/>
 <label>글제목:</label><br/>
 <input type="text" name="title" value="${board.title }" /><br/>
 <label>글내용:</label><br/>
@@ -30,7 +33,22 @@
 
 <br/><br/>
 
-<a href="list" type="button">목록</a>
+<button id="list">목록</button>
+
+<script type="text/javascript">
+
+var bno = $('#bno').val();
+var page = $('#page').val();
+var perPageNum = $('#perPageNum').val();
+
+$('#list').on('click',function(){
+		
+	location.href= 'list?page='+page+'&perPageNum='+perPageNum;	
+
+})
+
+</script>
+
 
 </body>
 </html>

@@ -33,7 +33,8 @@ public class PageMaker {
 		
 		prev = startPage == 1 ? false:true;
 		
-		next = endPage*criteria.getPerPageNum()>=totalCount ? false:true; 
+		next = endPage == totalEndPage ? false:true; 
+//		next = endPage*criteria.getPerPageNum()>=totalCount ? false:true; 
 	}
 	
 
